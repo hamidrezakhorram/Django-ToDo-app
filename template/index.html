@@ -33,8 +33,16 @@
                 <div class="card px-3">
                     <div class="card-body">
                         <h4 class="card-title">Todo list</h4>
-                        <div class="add-items d-flex"> <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button> </div>
-                        <div class="list-wrapper">
+                        <form class="pt-3" method="POST" action="{% url 'tasks:add' %}">
+                          {% csrf_token %}
+                          <div class="input-group mb-3">
+                            <input type="text" class="form-control rounded-4" name="title" placeholder="Enter task title"
+                              aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-primary" type="submit">Add</button>
+                          </div>
+                
+
+                           <div class="list-wrapper">
                             <ul class="d-flex flex-column-reverse todo-list">
                               {% for task in tasks %}
                                 <li>
