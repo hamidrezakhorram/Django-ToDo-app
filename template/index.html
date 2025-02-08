@@ -47,7 +47,15 @@
                               {% for task in tasks %}
                                 <li>
                                     <div class="form-check"> 
-                                      <label class="form-check-label"> <input class="checkbox" type="checkbox"> {{task.title}} <i class="input-helper"></i></label> </div> 
+                                      <form method="post" action="{% url 'tasks:update' pk=task.id %}">
+                                        {% csrf_token %}
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox" name="status" 
+                                                   onchange="this.form.submit();" {% if task.status %}checked{% endif %}>
+                                            {{ task.title }} 
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </form>
                                       
                                         <a href="{% url 'tasks:delete' pk=task.id  %}"> <i  class="remove mdi mdi-close-circle-outline"></i></a>
                                       

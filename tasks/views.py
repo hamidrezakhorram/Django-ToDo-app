@@ -23,10 +23,16 @@ class DeleteTaskViews(DeleteView):
     model = Task
     success_url = reverse_lazy('tasks:index')
     
-    # def get(self, request, *args, **kwargs):
-    #     return self.post(request, *args, **kwargs)
+ 
+   
 
+class UpdateTaskViews(UpdateView):
+    model =Task
+    fields =['status']
+    template_name ='index.html'
+    success_url = reverse_lazy('tasks:index')
 
+    
     
     
 
