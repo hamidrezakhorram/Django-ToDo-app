@@ -2,8 +2,9 @@ from django.shortcuts import render , redirect
 from django.views.generic import TemplateView , ListView , CreateView , DeleteView , UpdateView
 from .models import Task
 from django.urls import reverse_lazy 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class TaskViews(ListView):
+class TaskViews(LoginRequiredMixin,ListView):
     context_object_name = 'tasks'
     template_name = 'index.html'
     def get_queryset(self):
