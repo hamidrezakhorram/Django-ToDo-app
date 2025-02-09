@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView , LogoutView
 from django.urls import reverse_lazy
 from django.contrib import messages
 
@@ -10,5 +10,6 @@ class UserLoginViews(LoginView):
         return self.success_url
    
      
-
+class UserLogoutViews(LogoutView):
+    next_page = 'tasks:index'
 
