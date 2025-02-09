@@ -15,9 +15,10 @@
     <input type="checkbox" id="check">
     <div class="login form">
       <header>Login</header>
-      <form action="post">
-        <input type="text" placeholder="Enter your email">
-        <input type="password" placeholder="Enter your password">
+      <form method="post" action="{% url 'accounts:login' %}">
+        {% csrf_token %}
+        <input type="email" name="username" placeholder="Enter your email">
+        <input type="password" name="password" placeholder="Enter your password">
         <a href="#">Forgot password?</a>
         <input type="submit" class="button" value="Login">
       </form>
